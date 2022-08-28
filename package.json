@@ -1,0 +1,40 @@
+{
+  "name": "simple-status-messages",
+  "version": "0.0.1",
+  "description": "A simple TypeScript package that builds up a messaging system.",
+  "main": "./dist/src/SimplyStatusMessages.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tsc ./test/test.ts --target esnext --module esnext",
+    "build": "npm i && npm run updateInfo && tsc -p ./tsconfig.json",
+    "watch": "tsc --watch -p ./tsconfig.json",
+    "updateInfo": "tsc ./tools/syncInfo.ts --target esnext --module esnext && node ./tools/syncInfo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosunLP/simple-status-messages.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "NPM",
+    "messages",
+    "status",
+    "Library"
+  ],
+  "author": {
+    "name": "Jonas Pfalzgraf",
+    "email": "info@josunlp.de"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JosunLP/simple-status-messages/issues"
+  },
+  "homepage": "https://github.com/JosunLP/simple-status-messages#readme",
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "typescript": "^4.8.2"
+  }
+}
