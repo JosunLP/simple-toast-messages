@@ -100,11 +100,11 @@ class SimplyStatusMessages {
 		css.type = "text/css";
 		css.innerHTML = `
 			.ssm_message_container {
-				padding: 1rem;
-				margin-bottom: 1rem;
-				width: 30em;
-				position: fixed;
-				z-index: 2147483647;
+				padding: 1rem !important;
+				margin-bottom: 1rem !important;
+				width: 30em !important;
+				position: fixed !important;
+				z-index: 2147483647 !important;
 				right: 0;
 				top: 0;
 			}
@@ -146,14 +146,14 @@ class SimplyStatusMessages {
 			}
 			.ssm_message {
 				display: flex !important;
-				font-weight: lighter;
-				font-size: 1.3rem;
-				align-items: center;
-				font-family: Courier New;
-				margin-bottom: 1rem;
-				padding: 0.5rem;
-				border-radius: 0.25rem;
-				width: 100%;
+				font-weight: lighter !important;
+				font-size: 1.3rem !important;
+				align-items: center !important;
+				font-family: Courier New !important;
+				margin-bottom: 1rem !important;
+				padding: 0.5rem !important;
+				border-radius: 0.25rem !important;
+				width: 100% !important;
 				right: 0;
 				top: 0;
 				bottom: 0;

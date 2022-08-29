@@ -10,3 +10,26 @@
 [![TypeScript](https://img.shields.io/badge/Developed%20in-TypeScript-blue?logo=typescript)](https://www.typescriptlang.org/)
 
 A simple TypeScript package that builds up a messaging system.
+
+## Installation
+
+```npm install simple-status-messages```
+
+## Usage
+
+```typescript
+import SimplyStatusMessages from 'simple-status-messages';
+import { SimplyStatusMessages, ssm, M } from 'simple-status-messages';
+
+const msg = SimplyStatusMessages.getInstance();
+msg.success('Lorem ipsum is simply dummy text ');
+msg.error('Lorem ipsum is simply dummy text ');
+msg.info('Lorem ipsum is simply dummy text ');
+msg.warning('Lorem ipsum is simply dummy text ');
+```
+
+![Example](assets/images/example.png)
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
