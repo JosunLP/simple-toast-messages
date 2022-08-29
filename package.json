@@ -1,8 +1,8 @@
 {
-  "name": "simple-status-messages",
+  "name": "simple-toast-messages",
   "version": "1.0.0",
   "description": "A simple TypeScript package that builds up a messaging system.",
-  "main": "./dist/src/SimplyStatusMessages.js",
+  "main": "./dist/src/SimplyToasMessages.js",
   "type": "module",
   "directories": {
     "test": "test"
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JosunLP/simple-status-messages.git"
+    "url": "git+https://github.com/JosunLP/simple-toast-messages.git"
   },
   "keywords": [
     "TypeScript",
@@ -30,9 +30,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JosunLP/simple-status-messages/issues"
+    "url": "https://github.com/JosunLP/simple-toast-messages/issues"
   },
-  "homepage": "https://github.com/JosunLP/simple-status-messages#readme",
+  "homepage": "https://github.com/JosunLP/simple-toast-messages#readme",
   "devDependencies": {
     "@types/node": "^18.0.6",
     "typescript": "^4.8.2"

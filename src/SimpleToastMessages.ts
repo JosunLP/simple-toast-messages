@@ -3,21 +3,21 @@ import Helper from "./classes/helper.js";
 import Info from "./models/info.js";
 
 /**
- * SimplyStatusMessages
+ * Simple toast messages
  */
-class SimplyStatusMessages {
+class SimpleToastMessages {
 	/**
 	 * Instance  of simply status messages
 	 */
-	private static instance: SimplyStatusMessages;
+	private static instance: SimpleToastMessages;
 
 	/**
 	 * Gets instance
 	 * @returns instance
 	 */
-	public static getInstance(): SimplyStatusMessages {
+	public static getInstance(): SimpleToastMessages {
 		if (!this.instance) {
-			this.instance = new SimplyStatusMessages();
+			this.instance = new SimpleToastMessages();
 		}
 
 		return this.instance;
@@ -44,14 +44,16 @@ class SimplyStatusMessages {
 	 * @param message
 	 * @param type
 	 */
-	private async show(message: string, type: MessageType) {
+	private async show(message: string, type: MessageType, timer?: number) {
 		const messageElement = this.renderMessage(message, type);
 		const messageContainer = <HTMLDivElement>(
 			document.getElementById("ssm_message_container")
 		);
 		messageContainer.appendChild(messageElement);
-		await Helper.sleep(3000);
-		messageContainer.removeChild(messageElement);
+		if (timer) {
+			await Helper.sleep(timer);
+			messageContainer.removeChild(messageElement);
+		}
 	}
 
 	/**
@@ -63,6 +65,16 @@ class SimplyStatusMessages {
 	private renderMessage(message: string, type: MessageType) {
 		const messageElement = document.createElement("div");
 		let prefix = "";
+		const suffix = document.createElement("b");
+		suffix.innerHTML = "X";
+		suffix.className = "ssm_message_close";
+		suffix.addEventListener("click", () => {
+			messageElement.remove();
+		});
+		suffix.style.float = "right";
+		suffix.style.cursor = "pointer";
+		suffix.style.marginRight = "1rem";
+		suffix.style.marginLeft = "1rem";
 
 		switch (type) {
 			case "success":
@@ -85,8 +97,11 @@ class SimplyStatusMessages {
 
 		messageElement.innerHTML =
 			prefix + "<b>-</b> <span>" + message + "</span>";
+		messageElement.appendChild(suffix);
 		messageElement.className = type + "_message ssm_message";
 		messageElement.style.display = "flex";
+		messageElement.style.width = "100%";
+
 		return messageElement;
 	}
 
@@ -174,36 +189,36 @@ class SimplyStatusMessages {
 	 * Success message
 	 * @param message
 	 */
-	public success(message: string) {
-		this.show(message, "success");
+	public success(message: string, timeOut?: number) {
+		this.show(message, "success", timeOut);
 	}
 
 	/**
 	 * Errors message
 	 * @param message
 	 */
-	public error(message: string) {
-		this.show(message, "error");
+	public error(message: string, timeOut?: number) {
+		this.show(message, "error", timeOut);
 	}
 
 	/**
 	 * Warning message
 	 * @param message
 	 */
-	public warning(message: string) {
-		this.show(message, "warning");
+	public warning(message: string, timeOut?: number) {
+		this.show(message, "warning", timeOut);
 	}
 
 	/**
 	 * Infos message
 	 * @param message
 	 */
-	public info(message: string) {
-		this.show(message, "info");
+	public info(message: string, timeOut?: number) {
+		this.show(message, "info", timeOut);
 	}
 }
 
-export default { SimplyStatusMessages };
-export { SimplyStatusMessages };
-export { SimplyStatusMessages as ssm };
-export { SimplyStatusMessages as M };
+export default { SimpleToastMessages };
+export { SimpleToastMessages };
+export { SimpleToastMessages as stm };
+export { SimpleToastMessages as T };

@@ -27,12 +27,12 @@ export default class Info {
 	/**
 	 * Repository  of info
 	 */
-	private readonly REPOSITORY: string = "git+https://github.com/JosunLP/simple-status-messages.git"
+	private readonly REPOSITORY: string = "git+https://github.com/JosunLP/simple-toast-messages.git"
 
 	/**
 	 * Homepage  of info
 	 */
-	private readonly HOMEPAGE: string = "https://github.com/JosunLP/simple-status-messages#readme"
+	private readonly HOMEPAGE: string = "https://github.com/JosunLP/simple-toast-messages#readme"
 
 	/**
 	 * Gets info

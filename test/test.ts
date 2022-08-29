@@ -1,4 +1,4 @@
-import { M } from "../dist/src/SimplyStatusMessages.js";
+import { T } from "../dist/src/SimpleToastMessages.js";
 
 const body = document.body;
 
@@ -9,11 +9,11 @@ const message = "Lorem Ipsum is simply dummy text ";
 fireButton.classList.add("btn", "btn-primary");
 fireButton.innerText = "Fire";
 fireButton.addEventListener("click", () => {
-	const msg = M.getInstance();
-	msg.success(message);
+	const msg = T.getInstance();
+	msg.success(message, 1000);
 	msg.error(message);
-	msg.info(message);
-	msg.warning(message);
+	msg.info(message, 2000);
+	msg.warning(message, 5000);
 })
 
 fireInfoContainer.appendChild(fireButton);
