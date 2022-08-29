@@ -28,7 +28,7 @@ readFile(packageFile, "utf8", (err, data) => {
 	});
 });
 
-function replaceLine(target: string, searchString: string, pkg: any) {
+function replaceLine(target: string, searchString: string, pkg: string) {
 	const re = new RegExp("^.*" + searchString + ".*$", "gm");
 	target = target.replace(
 		re,
