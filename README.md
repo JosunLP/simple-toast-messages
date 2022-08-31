@@ -21,7 +21,7 @@ npm install simple-toast-messages
 
 ```typescript
 import SimpleToastMessages from 'simple-toast-messages';
-import { SimpleToastMessages, ssm, M } from 'simple-toast-messages';
+import { SimpleToastMessages, stm, T } from 'simple-toast-messages';
 
 const msg = SimpleToastMessages.getInstance();
 msg.success(message, 1000);
