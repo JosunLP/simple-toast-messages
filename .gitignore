@@ -745,3 +745,4 @@ FodyWeavers.xsd
 .logs
 **/test.js
 **/syncInfo.js
+package-lock.json

@@ -1,6 +1,6 @@
 {
   "name": "simple-toast-messages",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple TypeScript package that builds up a messaging system.",
   "main": "./dist/src/SimpleToastMessages.js",
   "type": "module",
