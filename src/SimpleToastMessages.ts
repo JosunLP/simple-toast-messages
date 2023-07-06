@@ -29,9 +29,11 @@ class SimpleToastMessages {
 	private constructor() {
 		let messageContainer = document.createElement("div");
 		messageContainer = this.buildCss(messageContainer);
-		messageContainer.className = "ssm_message_container";
-		messageContainer.id = "ssm_message_container";
+		messageContainer.className = "stm_message_container";
+		messageContainer.id = "stm_message_container";
 		document.body.appendChild(messageContainer);
+
+		this.refresh(messageContainer);
 	}
 
 	/**
@@ -47,12 +49,37 @@ class SimpleToastMessages {
 	private async show(message: string, type: MessageType, timer?: number) {
 		const messageElement = this.renderMessage(message, type);
 		const messageContainer = <HTMLDivElement>(
-			document.getElementById("ssm_message_container")
+			document.getElementById("stm_message_container")
 		);
 		messageContainer.appendChild(messageElement);
 		if (timer) {
 			await Helper.sleep(timer);
 			messageContainer.removeChild(messageElement);
+		}
+	}
+
+	/**
+	 * Refreshs simple toast messages
+	 * @param messageContainer
+	 * @returns refresh
+	 */
+	private async refresh(messageContainer: HTMLDivElement): Promise<void> {
+		const state = true;
+		while (state) {
+			const container = document.querySelectorAll("stm_message_container");
+
+			if (container.length <= 0) {
+				document.body.appendChild(messageContainer);
+			}
+			await Helper.sleep(5000);
+
+			if (document.querySelectorAll("stm_message_container").length > 1) {
+				container.forEach((element) => {
+					element.remove();
+				});
+
+				document.body.appendChild(messageContainer);
+			}
 		}
 	}
 
@@ -67,7 +94,7 @@ class SimpleToastMessages {
 		let prefix = "";
 		const suffix = document.createElement("b");
 		suffix.innerHTML = "X";
-		suffix.className = "ssm_message_close";
+		suffix.className = "stm_message_close";
 		suffix.addEventListener("click", () => {
 			messageElement.remove();
 		});
@@ -98,7 +125,7 @@ class SimpleToastMessages {
 		messageElement.innerHTML =
 			prefix + "<b>-</b> <span>" + message + "</span>";
 		messageElement.appendChild(suffix);
-		messageElement.className = type + "_message ssm_message";
+		messageElement.className = type + "_message stm_message";
 		messageElement.style.display = "flex";
 		messageElement.style.width = "100%";
 
@@ -114,7 +141,7 @@ class SimpleToastMessages {
 		const css = document.createElement("style");
 		css.type = "text/css";
 		css.innerHTML = `
-			.ssm_message_container {
+			.stm_message_container {
 				padding: 1rem !important;
 				margin-bottom: 1rem !important;
 				width: 30em !important;
@@ -151,20 +178,20 @@ class SimpleToastMessages {
 			.info_message svg {
 				filter: invert(48%) sepia(40%) saturate(1367%) hue-rotate(172deg) brightness(96%) contrast(99%);
 			}
-			.ssm_message svg {
+			.stm_message svg {
 				font-size: 3rem;
 				margin-left: 0.5rem;
 			}
-			.ssm_message b {
+			.stm_message b {
 				font-size: 1.5rem;
 				margin-left: 0.7rem;
 			}
-			.ssm_message {
+			.stm_message {
 				display: flex !important;
 				font-weight: lighter !important;
-				font-size: 1.3rem !important;
+				font-size: 1rem !important;
 				align-items: center !important;
-				font-family: Courier New !important;
+				font-family: Verdana !important;
 				margin-bottom: 1rem !important;
 				padding: 0.5rem !important;
 				border-radius: 0.25rem !important;
@@ -176,9 +203,11 @@ class SimpleToastMessages {
 				box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
 				opacity: 0.9;
 			}
-			.ssm_message span {
+			.stm_message span {
 				flex: 1;
 				margin-left: 1rem;
+				max-height: 7rem;
+				overflow-x: auto;
 			}
 			`;
 		element.appendChild(css);
@@ -188,6 +217,19 @@ class SimpleToastMessages {
 	/**
 	 * Success message
 	 * @param message
+	 * @param timeOut?
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.success("Error message", 5000);
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.success("Error message");
+	 * ```
 	 */
 	public success(message: string, timeOut?: number) {
 		this.show(message, "success", timeOut);
@@ -196,6 +238,19 @@ class SimpleToastMessages {
 	/**
 	 * Errors message
 	 * @param message
+	 * @param timeOut?
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.error("Error message", 5000);
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.error("Error message");
+	 * ```
 	 */
 	public error(message: string, timeOut?: number) {
 		this.show(message, "error", timeOut);
@@ -204,6 +259,19 @@ class SimpleToastMessages {
 	/**
 	 * Warning message
 	 * @param message
+	 * @param timeOut?
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.warning("Error message", 5000);
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.warning("Error message");
+	 * ```
 	 */
 	public warning(message: string, timeOut?: number) {
 		this.show(message, "warning", timeOut);
@@ -212,6 +280,19 @@ class SimpleToastMessages {
 	/**
 	 * Infos message
 	 * @param message
+	 * @param timeOut?
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.info("Error message", 5000);
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.info("Error message");
+	 * ```
 	 */
 	public info(message: string, timeOut?: number) {
 		this.show(message, "info", timeOut);
@@ -222,3 +303,4 @@ export default { SimpleToastMessages };
 export { SimpleToastMessages };
 export { SimpleToastMessages as stm };
 export { SimpleToastMessages as T };
+export { MessageType };
