@@ -64,7 +64,8 @@ class SimpleToastMessages {
 	 * @returns refresh
 	 */
 	private async refresh(messageContainer: HTMLDivElement): Promise<void> {
-		while (true) {
+		const state = true;
+		while (state) {
 			const container = document.querySelectorAll("stm_message_container");
 
 			if (container.length <= 0) {
@@ -73,7 +74,11 @@ class SimpleToastMessages {
 			await Helper.sleep(5000);
 
 			if (document.querySelectorAll("stm_message_container").length > 1) {
-				break;
+				container.forEach((element) => {
+					element.remove();
+				});
+
+				document.body.appendChild(messageContainer);
 			}
 		}
 	}
