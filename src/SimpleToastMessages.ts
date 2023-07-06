@@ -71,6 +71,10 @@ class SimpleToastMessages {
 				document.body.appendChild(messageContainer);
 			}
 			await Helper.sleep(5000);
+
+			if (document.querySelectorAll("stm_message_container").length > 1) {
+				break;
+			}
 		}
 	}
 
