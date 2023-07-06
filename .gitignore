@@ -746,3 +746,5 @@ FodyWeavers.xsd
 **/test.js
 **/syncInfo.js
 package-lock.json
+
+.vscode/settings.json
