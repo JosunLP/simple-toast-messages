@@ -266,6 +266,15 @@ class SimpleToastMessages {
 				filter: invert(48%) sepia(40%) saturate(1367%) hue-rotate(172deg) brightness(96%) contrast(99%);
 			}
 			.stm_message img {
+
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				pointer-events: none;
+
 				/*Handhelds (small devices)*/
 				@media only screen and (max-device-width: 40rem) {
 					width: 1.5rem;
@@ -286,6 +295,13 @@ class SimpleToastMessages {
 
 			}
 			.stm_message b {
+
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+
 				/*Handhelds (small devices)*/
 				@media only screen and (max-device-width: 40rem) {
 					font-size: 0.9rem;
@@ -313,7 +329,7 @@ class SimpleToastMessages {
 				pointer-events: auto !important;
 				box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
 				opacity: 0.9;
-				transition: visibility 1.5s ease-out 0.5s;
+				transition: visibility 0.5s ease-out 0.5s;
 				position: absolute !important;
 				overflow: hidden;
 
@@ -392,19 +408,19 @@ class SimpleToastMessages {
 			}
 			.stm_message_close_animation_left {
 				transform: translateX(-150%);
-				transition: transform 1.5s ease-in-out;
+				transition: transform 0.5s ease-in-out;
 			}
 			.stm_message_close_animation_right {
 				transform: translateX(150%);
-				transition: transform 1.5s ease-in-out;
+				transition: transform 0.5s ease-in-out;
 			}
 			.stm_message_close_animation_top {
 				transform: translateY(-150%);
-				transition: transform 1.5s ease-in-out;
+				transition: transform 0.5s ease-in-out;
 			}
 			.stm_message_close_animation_bottom {
 				transform: translateY(150%);
-				transition: transform 1.5s ease-in-out;
+				transition: transform 0.5s ease-in-out;
 			}
 			`;
 		element.appendChild(css);
@@ -502,3 +518,4 @@ export { SimpleToastMessages as stm };
 export { SimpleToastMessages as T };
 export { MessageType, PositionType, ToastSettingsType };
 export { MessageEnum, PositionEnum };
+export { Info };
