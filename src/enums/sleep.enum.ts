@@ -1,3 +1,9 @@
+/**
+ * Sleep enum
+ *
+ * @export
+ * @enum {number}
+ */
 export enum Sleep {
 	"short" = 1000,
 	"medium" = 2000,
