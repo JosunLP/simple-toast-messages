@@ -1,4 +1,4 @@
-import { T } from "../dist/src/SimpleToastMessages.js";
+import { PositionEnum, T } from "../dist/src/SimpleToastMessages.js";
 
 const body = document.body;
 
@@ -10,7 +10,10 @@ fireButton.classList.add("btn", "btn-primary");
 fireButton.innerText = "Fire";
 fireButton.addEventListener("click", () => {
 	const msg = T.getInstance();
-	msg.success(message + crypto.randomUUID(), 1000);
+	msg.success(message + crypto.randomUUID(), {
+		// timeOut: 1000,
+		position: PositionEnum.TOP_LEFT,
+	});
 	msg.error(
 		message +
 			crypto.randomUUID() +
@@ -22,8 +25,28 @@ fireButton.addEventListener("click", () => {
 			crypto.randomUUID() +
 			crypto.randomUUID()
 	);
-	msg.info(message + crypto.randomUUID(), 2000);
-	msg.warning(message + crypto.randomUUID(), 5000);
+	msg.error(
+		message +
+			crypto.randomUUID() +
+			crypto.randomUUID() +
+			crypto.randomUUID() +
+			crypto.randomUUID()
+	);
+	msg.info(message + crypto.randomUUID(), {
+		// timeOut: 3000,
+		position: PositionEnum.BOTTOM_LEFT,
+		opacity: 0.5,
+	});
+	msg.warning(message + crypto.randomUUID(), {
+		// timeOut: 5000,
+		position: PositionEnum.BOTTOM_CENTER,
+		opacity: 0.8,
+	});
+	msg.warning(message + crypto.randomUUID(), {
+		// timeOut: 5000,
+		position: PositionEnum.TOP_CENTER,
+		opacity: 0.5,
+	});
 });
 
 fireInfoContainer.appendChild(fireButton);
