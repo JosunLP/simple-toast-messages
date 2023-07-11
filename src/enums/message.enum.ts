@@ -3,4 +3,4 @@ export enum MessageEnum {
 	"ERROR" = "error",
 	"WARNING" = "warning",
 	"INFO" = "info",
-};
+}
