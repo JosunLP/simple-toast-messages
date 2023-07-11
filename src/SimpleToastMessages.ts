@@ -49,6 +49,14 @@ class SimpleToastMessages {
 	 * Shows message
 	 * @param message
 	 * @param type
+	 * @param toastSettings?
+	 *
+	 * @returns Promise<void>
+	 *
+	 * @example
+	 * ```typescript
+	 * SimpleToastMessages.show("Hello World", MessageType.SUCCESS);
+	 * ```
 	 */
 	private async show(message: string, type: MessageType, toastSettings?: ToastSettingsType): Promise<void> {
 		const messageElement = this.renderMessage(message, type, toastSettings);
@@ -122,7 +130,18 @@ class SimpleToastMessages {
 	 * Renders message
 	 * @param message
 	 * @param type
+	 * @param toastSettings?
 	 * @returns
+	 *
+	 * @example
+	 * ```typescript
+	 * SimpleToastMessages.renderMessage("Hello World", MessageType.SUCCESS);
+	 * ```
+	 *
+	 * @example
+	 * ```typescript
+	 * SimpleToastMessages.renderMessage("Hello World", MessageType.SUCCESS, {position: PositionEnum.TOP_LEFT});
+	 * ```
 	 */
 	private renderMessage(message: string, type: MessageType, toastSettings?: ToastSettingsType): HTMLDivElement {
 		const messageElement = document.createElement("div") as HTMLDivElement;
@@ -430,18 +449,42 @@ class SimpleToastMessages {
 	/**
 	 * Success message
 	 * @param message
-	 * @param timeOut?
+	 * @param toastSettings?
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.success("Error message", 5000);
+	 * stm.success("message");
 	 * ```
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.success("Error message");
+	 * stm.success("message",
+	 * {
+	 * 		timeOut: 5000
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.success("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.success("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER,
+	 * 		opacity: 0.5
+	 * });
 	 * ```
 	 */
 	public success(message: string, toastSettings?: ToastSettingsType) {
@@ -451,18 +494,42 @@ class SimpleToastMessages {
 	/**
 	 * Errors message
 	 * @param message
-	 * @param timeOut?
+	 * @param toastSettings?
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.error("Error message", 5000);
+	 * stm.error("message");
 	 * ```
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.error("Error message");
+	 * stm.error("message",
+	 * {
+	 * 		timeOut: 5000
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.error("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.error("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER,
+	 * 		opacity: 0.5
+	 * });
 	 * ```
 	 */
 	public error(message: string, toastSettings?: ToastSettingsType) {
@@ -472,18 +539,42 @@ class SimpleToastMessages {
 	/**
 	 * Warning message
 	 * @param message
-	 * @param timeOut?
+	 * @param toastSettings?
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.warning("Error message", 5000);
+	 * stm.warning("message");
 	 * ```
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.warning("Error message");
+	 * stm.warning("message",
+	 * {
+	 * 		timeOut: 5000
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.warning("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.warning("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER,
+	 * 		opacity: 0.5
+	 * });
 	 * ```
 	 */
 	public warning(message: string, toastSettings?: ToastSettingsType) {
@@ -493,18 +584,42 @@ class SimpleToastMessages {
 	/**
 	 * Infos message
 	 * @param message
-	 * @param timeOut?
+	 * @param toastSettings?
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.info("Error message", 5000);
+	 * stm.info("message");
 	 * ```
 	 *
 	 * @example
 	 * ```ts
 	 * const stm = SimpleToastMessages.getInstance();
-	 * stm.info("Error message");
+	 * stm.info("message",
+	 * {
+	 * 		timeOut: 5000
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.info("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER
+	 * });
+	 * ```
+	 *
+	 * @example
+	 * ```ts
+	 * const stm = SimpleToastMessages.getInstance();
+	 * stm.info("message",
+	 * {
+	 * 		timeOut: 5000,
+	 * 		position: PositionEnum.TOP_CENTER,
+	 * 		opacity: 0.5
+	 * });
 	 * ```
 	 */
 	public info(message: string, toastSettings?: ToastSettingsType) {
