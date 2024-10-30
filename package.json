@@ -1,6 +1,6 @@
 {
   "name": "simple-toast-messages",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple TypeScript package that builds up a messaging system.",
   "main": "./dist/src/SimpleToastMessages.js",
   "type": "module",
@@ -12,7 +12,7 @@
     "test": "tsc ./test/test.ts --target esnext --module esnext",
     "build": "npm i && npm run updateInfo && tsc -p ./tsconfig.json",
     "watch": "tsc --watch -p ./tsconfig.json",
-    "updateInfo": "tsc ./tools/syncInfo.ts --target esnext --module esnext && node ./tools/syncInfo.js"
+    "updateInfo": "tsc ./tools/syncInfo.ts --target esnext --module nodenext --moduleResolution nodenext && node ./tools/syncInfo.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,10 @@
   },
   "homepage": "https://github.com/JosunLP/simple-toast-messages#readme",
   "devDependencies": {
-    "@types/node": "^18.0.6",
-    "typescript": "^4.8.2"
+    "@types/node": "^22.8.4",
+    "typescript": "^5.6.3"
+  },
+  "volta": {
+    "node": "22.11.0"
   }
 }
